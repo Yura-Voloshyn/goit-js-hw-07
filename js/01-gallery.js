@@ -28,7 +28,7 @@ function createGalleryMarkup() {
     .map(({ preview, original, description }) => {
       return `
     <div class="gallery__item">
-    <a class="gallery__link" href="#">
+    <a class="gallery__link" href="${original}">
     <img
       class="gallery__image"
       src="${preview}"
@@ -47,6 +47,7 @@ function createGalleryMarkup() {
 // console.log(instance);
 
 function onItemClick(event) {
+  event.preventDefault();
   const galleryItem = event.target.classList.contains("gallery__image");
   //   console.log(galleryItem.dataset);
   //   console.log(event.target);
