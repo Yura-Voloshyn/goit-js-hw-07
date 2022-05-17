@@ -22,7 +22,10 @@ const galleryMarkup = createGalleryMarkup(galleryItems);
 gallery.insertAdjacentHTML("afterbegin", galleryMarkup);
 
 gallery.addEventListener("click", onItemClick);
-
+gallery.addEventListener("keyDown", (evt) => {
+  evt.key === "Escape";
+  instace.close();
+});
 function createGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {

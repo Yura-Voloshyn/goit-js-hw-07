@@ -17,7 +17,7 @@ function createGalleryMarkup() {
     .map(({ preview, original, description }) => {
       return `
     <a class="gallery__item" href="${original}">
-  <img class="gallery__image" src="${preview}" alt="${description}" />
+  <img class="gallery__image" src="${preview}" alt="${description}" title="${description}" />
 </a>`;
     })
     .join("");
@@ -37,16 +37,20 @@ function onItemClick(event) {
   if (!galleryItem) {
     return;
   }
-  const lightbox = new SimpleLightbox(".gallery a", {});
-  // lightbox = ".gallery__item".onItemClick();
-  // let lightbox = SimpleLightbox.open({
-  //   items: [...galleryItems],
-  // });
-  console.log(lightbox);
-  // SimpleLightbox.open(event.target);
-  // const instance = basicLightbox.create(
-  //   `<img src="${event.target.dataset.source}" alt="desc"/>`
-  // );
-  // instance.show(() => console.log("lightbox now visible"));
+  const lightbox = new SimpleLightbox(".gallery a", {
+    captionDelay: 250,
+  });
 }
+
+// lightbox = ".gallery__item".onItemClick();
+// let lightbox = SimpleLightbox.open({
+//   items: [...galleryItems],
+// });
+//   console.log(lightbox);
+// SimpleLightbox.open(event.target);
+// const instance = basicLightbox.create(
+//   `<img src="${event.target.dataset.source}" alt="desc"/>`
+// );
+// instance.show(() => console.log("lightbox now visible"));
+
 // console.log(galleryItems);
