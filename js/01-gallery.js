@@ -22,10 +22,7 @@ const galleryMarkup = createGalleryMarkup(galleryItems);
 gallery.insertAdjacentHTML("afterbegin", galleryMarkup);
 
 gallery.addEventListener("click", onItemClick);
-gallery.addEventListener("keyDown", (evt) => {
-  evt.key === "Escape";
-  instace.close();
-});
+
 function createGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -43,26 +40,32 @@ function createGalleryMarkup() {
     })
     .join("");
 }
-
 // const instance = basicLightbox.create(
-//   `<img src="${galleryItems[4].original}" alt="desc"/>`
+//   `<img src="${itmLink.value}" alt="desc"/>`
 // );
-// console.log(instance);
 
 function onItemClick(event) {
+  gallery.addEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+      instance.close();
+    }
+  });
+
   event.preventDefault();
+  const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}" alt="desc"/>`
+  );
   const galleryItem = event.target.classList.contains("gallery__image");
-  //   console.log(galleryItem.dataset);
-  //   console.log(event.target);
-  //   console.log(event.currentTarget);
   if (!galleryItem) {
     return;
   } else {
-    const instance = basicLightbox.create(
-      `<img src="${event.target.dataset.source}" alt="desc"/>`
-    );
-    instance.show(() => console.log("lightbox now visible"));
+    instance.show();
   }
 }
-
-console.log(galleryItems);
+// function onEscBtnClick(evt) {
+//   if (evt.code === "Escape") {
+//     console.log(evt.code);
+//     instance.close();
+//   }
+// }
+// console.log(galleryItems);
