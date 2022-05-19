@@ -15,8 +15,8 @@ gallery.addEventListener("click", lightbox);
 function createGalleryMarkup() {
   return galleryItems
     .map(({ preview, original, description }) => {
-      return `<li class="list__item">
-    <a class="gallery__item gallery__link" href="${original}">
+      return `<li class="gallery__item">
+    <a class="gallery__link" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
 </a>
 </li>`;
